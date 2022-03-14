@@ -1,0 +1,9 @@
+{
+    "eslint.alwaysShowStatus": true,
+    // "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true,
+    },
+    // "eslint.format.enable": true,
+}
