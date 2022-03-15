@@ -17,10 +17,12 @@
 }
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-grow: 1;
   overflow: auto;
   width: 100vw;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   max-width: 1362px;
+  align-items: center;
+  flex-wrap: nowrap;
 }

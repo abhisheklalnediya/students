@@ -1,0 +1,26 @@
+.block {
+    position: relative;
+    padding: 10px;
+}
+
+.body {
+    border: 1px solid #2e2e2e;
+    padding: 20px 10px 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    background: #545454;
+    top: -0px;
+    z-index: 100;
+    left: 16px;
+    padding: 0px 8px;
+    font-weight: bold;
+}
+
+

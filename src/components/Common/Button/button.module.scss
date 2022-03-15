@@ -1,0 +1,22 @@
+.button {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0px 5px;
+    background: #ffffff20;
+    color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    display: block;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover, .button:focus {
+    background: #ffffff40;
+}
+
+
+
+.button:active {
+    background: #ffffff60;
+}

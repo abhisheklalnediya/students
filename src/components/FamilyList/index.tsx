@@ -1,15 +1,15 @@
 import React from 'react';
-import useStudents from '../../controllers/students.controller';
+import useFamily from '../../controllers/family.controller';
 import AddStudentRow from '../AddStudentRow';
 import Student from '../Student';
-import classes from './studentList.module.scss';
+import classes from './familyList.module.scss';
 /**
  * @author Abhishek Lal
  * @summary React Element which renders the list of all the Students.
  */
 
-function StudentList() {
-  const { students, fetching } = useStudents();
+function FamilyList() {
+  const { students, fetching } = useFamily();
   return (
     <div className={classes.container}>
       <AddStudentRow />
@@ -20,4 +20,4 @@ function StudentList() {
   );
 }
 
-export default StudentList;
+export default FamilyList;
