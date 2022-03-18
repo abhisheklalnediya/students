@@ -9,12 +9,19 @@ import { useStateValue } from '../state';
 
 const useStudents = () => {
   const { state, dispatch } = useStateValue();
-  const { studentsData: { students, fetching } } = state;
+  const { studentsData: { students, fetching, searchQuery } } = state;
   useEffect(() => {
     if (!students.length) {
       getStudents(dispatch);
     }
   }, []);
-  return { students, fetching };
+  let visibleStudents = students;// .filter((s) => !s.draft);
+  if (searchQuery) {
+    visibleStudents = visibleStudents.filter((s) => s.ID === parseInt(searchQuery, 10) || [s.firstName, s.lastName].join(' ').toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
+  }
+
+  return {
+    students, fetching, searchQuery, visibleStudents
+  };
 };
 export default useStudents;

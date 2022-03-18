@@ -27,6 +27,7 @@ export function StateProvider(props: StateProviderProps) {
   const [state, dispatch] = useReducer(reducers, GLOBAL_INITIAL_STATE);
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = { state, dispatch };
+  console.log(value);
   return (
     <StateContext.Provider value={value}>
       {children}

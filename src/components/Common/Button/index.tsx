@@ -7,17 +7,27 @@ type ButtonProps = {
   submit?:boolean
   className?:string
   disabled?:boolean
+  mini?:boolean
+  error?:boolean
 };
 
 function Button(props:ButtonProps) {
   const {
-    disabled, submit, children, className, onClick
+    disabled, submit, children, className, onClick,
+    mini, error
   } = props;
+  const buttonClasses = [classes.button, className];
+  if (mini) {
+    buttonClasses.push(classes.mini);
+  }
+  if (error) {
+    buttonClasses.push(classes.error);
+  }
   return (
     <button
       type={submit ? 'submit' : 'button'}
       disabled={disabled}
-      className={[classes.button, className].join(' ')}
+      className={buttonClasses.join(' ')}
       onClick={onClick || undefined}
     >
       {children}
@@ -28,6 +38,8 @@ function Button(props:ButtonProps) {
 Button.defaultProps = {
   className: '',
   disabled: false,
+  mini: false,
+  error: false,
   submit: false,
   onClick: undefined
 };

@@ -24,6 +24,7 @@ module.exports = {
   ],
   rules: {
     "max-len": ["error", { "code": 220 }],
+    "max-classes-per-file": "off",
     '@typescript-eslint/comma-dangle': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', 'ts', 'tsx'] }],

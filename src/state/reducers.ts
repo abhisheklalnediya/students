@@ -1,4 +1,4 @@
-import { StudentState } from './modules/students/students';
+import { StudentState } from './modules/students/d';
 import { INITIAL_STATE_STUDENT, studentsReducer } from './modules/students/students.reducer';
 import { INITIAL_STATE_USER, userReducer } from './modules/user/user';
 import { UserState } from './modules/user/user.d';

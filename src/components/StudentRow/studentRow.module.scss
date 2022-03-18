@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  background-color: #FFFFFF10;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  color: #FFF;
+}
+
+.container:hover {
+  background-color: #FFFFFF20;
+}
+
+.id {
+  font-weight: bold;
+  width: 80px;
+}
+
+.name {
+  font-weight: bold;
+  width: 120px;
+}
+
+.dob {
+  width: 240px;
+}
+
+.actions {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.buttonDelete {
+  margin-right: 10px;
+}

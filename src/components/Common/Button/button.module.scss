@@ -20,3 +20,11 @@
 .button:active {
     background: #ffffff60;
 }
+
+.button.mini {
+    padding: 3px 6px;
+}
+
+.error {
+    border-color: #ff5722;
+}

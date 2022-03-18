@@ -1,7 +1,8 @@
 import React from 'react';
 import useStudents from '../../controllers/students.controller';
+import Student from '../../state/modules/students/d/Student';
 import AddStudentRow from '../AddStudentRow';
-import Student from '../Student';
+import StudentRow from '../StudentRow';
 import classes from './studentList.module.scss';
 /**
  * @author Abhishek Lal
@@ -9,12 +10,12 @@ import classes from './studentList.module.scss';
  */
 
 function StudentList() {
-  const { students, fetching } = useStudents();
+  const { fetching, visibleStudents } = useStudents();
   return (
     <div className={classes.container}>
       <AddStudentRow />
-      {students.map((s) => <Student key={s.ID} student={s} />)}
-      {!students.length && !fetching ? 'No Students there!!' : null}
+      {visibleStudents.map((s:Student) => <StudentRow key={s.ID} student={s} />)}
+      {!visibleStudents.length && !fetching ? 'No Students there!!' : null}
       {fetching ? '...' : null}
     </div>
   );

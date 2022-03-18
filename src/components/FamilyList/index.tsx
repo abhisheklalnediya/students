@@ -1,7 +1,7 @@
 import React from 'react';
 import useFamily from '../../controllers/family.controller';
-import AddStudentRow from '../AddStudentRow';
-import Student from '../Student';
+import AddFamilyRow from '../AddFamilyRow';
+import FamilyRow from '../FamilyRow';
 import classes from './familyList.module.scss';
 /**
  * @author Abhishek Lal
@@ -9,12 +9,12 @@ import classes from './familyList.module.scss';
  */
 
 function FamilyList() {
-  const { students, fetching } = useFamily();
+  const { family, fetching } = useFamily();
   return (
     <div className={classes.container}>
-      <AddStudentRow />
-      {students.map((s) => <Student key={s.ID} student={s} />)}
-      {!students.length && !fetching ? 'No Students there!!' : null}
+      <AddFamilyRow />
+      {family.map((f) => <FamilyRow key={f.ID} family={f} />)}
+      {!family.length ? 'No Family there!!' : null}
       {fetching ? '...' : null}
     </div>
   );

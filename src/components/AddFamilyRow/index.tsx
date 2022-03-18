@@ -1,27 +1,27 @@
 import React from 'react';
-import useModel from '../../controllers/model.controller';
+import useFamily from '../../controllers/family.controller';
 import Button from '../Common/Button';
-import classes from './addStudentRow.module.scss';
+import classes from './addFamilyRow.module.scss';
 /**
  * @author Abhishek Lal
- * @summary React Element which renders Button to add a Student
+ * @summary React Element which renders Button to add a Family Member
  */
 
-function AddStudentRow() {
-  const { showModel } = useModel();
+function AddFamilyRow() {
+  const { addFamily } = useFamily();
   const onClick = () => {
-    showModel(true);
+    addFamily();
   };
   return (
     <div className={classes.container}>
       <Button className={classes.addButton} onClick={onClick}>
         <>
           <i className="lni lni-plus" />
-          Add Student
+          Add Family Member
         </>
       </Button>
     </div>
   );
 }
 
-export default React.memo(AddStudentRow);
+export default React.memo(AddFamilyRow);

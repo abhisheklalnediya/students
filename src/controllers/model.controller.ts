@@ -1,5 +1,5 @@
 import { useStateValue } from '../state';
-import { setShowModel } from '../state/modules/students/students.actions';
+import { setAddStudent, setModelHide } from '../state/modules/students/students.actions';
 /**
  * @author Abhishek Lal
  * @summary A react custom hook controller which handles model state
@@ -7,10 +7,15 @@ import { setShowModel } from '../state/modules/students/students.actions';
 
 const useModel = () => {
   const { state, dispatch } = useStateValue();
-  const { studentsData: { showModel: show } } = state;
+  const { studentsData: { selectedStudentID } } = state;
   const showModel = (visiblity:boolean) => {
-    dispatch(setShowModel(visiblity));
+    dispatch(setAddStudent(visiblity));
   };
-  return { show, showModel };
+  const hideModel = () => {
+    dispatch(setModelHide());
+  };
+  return {
+    selectedStudentID, showModel, hideModel
+  };
 };
 export default useModel;

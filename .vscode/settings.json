@@ -5,5 +5,6 @@
         "source.fixAll": true,
         "source.organizeImports": true,
     },
+    "tizentv.excludeFiles": "/home/abhisheklal/works/bayzat/capabilities-test-AbhishekLal/src/state/modules/students/d/student.ts,/home/abhisheklal/works/bayzat/capabilities-test-AbhishekLal/src/state/modules/students/d",
     // "eslint.format.enable": true,
 }

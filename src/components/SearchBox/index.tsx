@@ -19,7 +19,7 @@ function SearchBox() {
   return (
     <input
       className={classes.input}
-      placeholder="Type for searching..."
+      placeholder="Search with ID, first name or last name"
       value={searchQuery}
       onChange={onChange}
     />
