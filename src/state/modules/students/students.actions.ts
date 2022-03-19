@@ -3,7 +3,7 @@ import Family from './d/Family';
 import Student from './d/Student';
 import {
   ACTION_ADD_FAMILY_DRAFT,
-  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODEL,
+  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODAL,
   ACTION_POST_STUDENT,
   ACTION_PUT_STUDENT,
   ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
@@ -55,8 +55,8 @@ export const setSelectStudent = (id:number):Action => ({
   payload: id
 });
 
-export const setModelHide = ():Action => ({
-  type: ACTION_HIDE_ADD_STUDENT_MODEL,
+export const setModalHide = ():Action => ({
+  type: ACTION_HIDE_ADD_STUDENT_MODAL,
 });
 
 export const setStudentDetails = (student:Student):Action => ({

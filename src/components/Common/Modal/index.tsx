@@ -15,13 +15,13 @@ function Modal(props:ModalProps) {
     open, title, children, className, onClose
   } = props;
 
-  const modelClasses = [classes.model, className];
+  const modalClasses = [classes.modal, className];
   if (open) {
-    modelClasses.push(classes.open);
+    modalClasses.push(classes.open);
   }
 
   return (
-    <div className={modelClasses.join(' ')}>
+    <div className={modalClasses.join(' ')}>
       <div className={classes.underlay} />
 
       <div className={classes.container}>

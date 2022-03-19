@@ -1,6 +1,6 @@
 import React from 'react';
 import { postStudent, putStudent } from '../../API/students';
-import useModel from '../../controllers/model.controller';
+import useModal from '../../controllers/modal.controller';
 import useStudent from '../../controllers/student.controller';
 import { useStateValue } from '../../state';
 import { setStudentDetails } from '../../state/modules/students/students.actions';
@@ -9,20 +9,20 @@ import Button from '../Common/Button';
 import Input from '../Common/Input';
 import Modal from '../Common/Modal';
 import FamilyList from '../FamilyList';
-import classes from './studentModel.module.scss';
+import classes from './studentModal.module.scss';
 
 /**
  * @author Abhishek Lal
  * @summary React Element which renders a single student
  */
 
-function StudentModel() {
-  const { selectedStudentID, hideModel } = useModel();
+function StudentModal() {
+  const { selectedStudentID, hideModal } = useModal();
   const { student } = useStudent();
   const { dispatch } = useStateValue();
   const { firstName, lastName, dateOfBirth } = student;
   const onClose = () => {
-    hideModel();
+    hideModal();
   };
 
   const onSubmit = (e:React.SyntheticEvent) => {
@@ -34,7 +34,7 @@ function StudentModel() {
       ps = putStudent(dispatch, student);
     }
     ps.then(() => {
-      hideModel();
+      hideModal();
     });
   };
 
@@ -71,4 +71,4 @@ function StudentModel() {
   );
 }
 
-export default React.memo(StudentModel);
+export default React.memo(StudentModal);

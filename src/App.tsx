@@ -1,7 +1,7 @@
 import classes from './App.module.scss';
 import SearchBox from './components/SearchBox';
 import StudentList from './components/StudentList';
-import StudentModel from './components/StudentModel';
+import StudentModal from './components/StudentModal';
 
 /**
  * @author Abhishek Lal
@@ -17,7 +17,7 @@ function App() {
       <div className={classes.container}>
         <StudentList />
       </div>
-      <StudentModel />
+      <StudentModal />
     </div>
   );
 }

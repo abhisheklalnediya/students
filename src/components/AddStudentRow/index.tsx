@@ -1,5 +1,5 @@
 import React from 'react';
-import useModel from '../../controllers/model.controller';
+import useModal from '../../controllers/modal.controller';
 import Button from '../Common/Button';
 import classes from './addStudentRow.module.scss';
 /**
@@ -8,9 +8,9 @@ import classes from './addStudentRow.module.scss';
  */
 
 function AddStudentRow() {
-  const { showModel } = useModel();
+  const { showModal } = useModal();
   const onClick = () => {
-    showModel(true);
+    showModal(true);
   };
   return (
     <div className={classes.container}>
