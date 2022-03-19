@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getFamily } from '../API/students';
 import { useStateValue } from '../state';
 import Family from '../state/modules/students/d/Family';
@@ -14,19 +14,33 @@ const useFamily = () => {
   const { state, dispatch } = useStateValue();
   const { studentsData: { students, fetching, selectedStudentID } } = state;
   const selectedStudent = students.find(({ ID }) => ID === selectedStudentID);
+  const [selectedFamilyID, setSelectedFamilyID] = useState<number | null>(null);
 
   useEffect(() => {
     if (selectedStudentID !== null && selectedStudent && (!selectedStudent.family.length) && !selectedStudent.draft) {
       getFamily(dispatch, selectedStudentID);
     }
+    setSelectedFamilyID(null);
   }, [selectedStudentID, students]);
+
   const family:Family[] = selectedStudent ? selectedStudent.family : [];
-  console.log(family);
+  const selectedFamily = selectedFamilyID ? family.find((f) => f.ID === selectedFamilyID) : null;
+
+  useEffect(() => {
+    console.log({ family, selectedFamilyID });
+    if (family.length) {
+      setSelectedFamilyID(family[family.length - 1].ID);
+    } else {
+      setSelectedFamilyID(null);
+    }
+  }, [family.length]);
 
   const addFamily = () => {
     dispatch(StudentActions.addFamily());
   };
 
-  return { family, fetching, addFamily };
+  return {
+    family, fetching, addFamily, selectedFamily, setSelectedFamilyID, selectedFamilyID
+  };
 };
 export default useFamily;

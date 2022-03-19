@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getStudents } from '../API/students';
+import { getNationalities, getStudents } from '../API/students';
 import { useStateValue } from '../state';
 /**
  * @author Abhishek Lal
@@ -13,6 +13,7 @@ const useStudents = () => {
   useEffect(() => {
     if (!students.length) {
       getStudents(dispatch);
+      getNationalities(dispatch);
     }
   }, []);
   let visibleStudents = students;// .filter((s) => !s.draft);

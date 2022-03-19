@@ -18,15 +18,17 @@ export default class Family {
 
   relationship: string;
 
+  draft: boolean = false;
+
   constructor(ID = getRandomId(), {
-    firstName = '', lastName = '', dateOfBirth = '', nationality = null, relationship = ''
+    firstName = '', lastName = '', dateOfBirth = '', nationality = null, relationship = '', draft = false
   } = {}) {
-    console.log('New Family Yey');
     this.ID = ID;
     this.firstName = firstName;
     this.lastName = lastName;
     this.dateOfBirth = dateOfBirth;
     this.nationality = nationality;
     this.relationship = relationship;
+    this.draft = draft;
   }
 }

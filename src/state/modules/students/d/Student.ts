@@ -1,3 +1,5 @@
+import Family from './Family';
+
 export default class Student {
   ID:number;
 
@@ -7,7 +9,7 @@ export default class Student {
 
   dateOfBirth: string = '';
 
-  family: any[] = [];
+  family: Family[] = [];
 
   draft:Boolean = false;
 

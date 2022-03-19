@@ -6,6 +6,7 @@
     display: none;
     opacity: 0;
     transition: opacity 200ms linear;
+    overflow: hidden;
 }
 
 .open {
@@ -48,6 +49,7 @@
     align-items: center;
     flex-direction: revert;
     justify-content: space-between;
+    flex-shrink: 0;
 }
 
 .body {
@@ -56,4 +58,5 @@
     flex-grow: 1;
     color: #FFF;
     display: flex;
+    overflow: hidden;
 }

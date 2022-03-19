@@ -5,11 +5,9 @@ import './index.css';
 import { StateProvider } from './state';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <StateProvider>
-      <App />
-    </StateProvider>
-  </React.StrictMode>,
+  <StateProvider>
+    <App />
+  </StateProvider>,
   document.getElementById('root'),
 );
 

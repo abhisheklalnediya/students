@@ -14,6 +14,14 @@ export const getStudents = (dispatch:React.Dispatch<Action>) => {
   });
 };
 
+export const getNationalities = (dispatch:React.Dispatch<Action>) => {
+  const url = `${API_BASE_URL}/Nationalities`;
+  axios.get(url).then((d) => {
+    const nationalities = d.data;
+    dispatch(StudentActions.getNationalities(nationalities));
+  });
+};
+
 export const getFamily = (dispatch:React.Dispatch<Action>, id:number) => {
   const url = `${API_BASE_URL}/Students/${id}/FamilyMembers/`;
   axios.get(url).then((d) => {

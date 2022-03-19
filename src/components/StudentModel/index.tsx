@@ -50,21 +50,23 @@ function StudentModel() {
   const title = student.draft ? 'Add Student' : 'Edit Student';
   return (
     <Modal open={open} onClose={onClose} title={title}>
-      <form onSubmit={onSubmit} className={classes.form}>
+      <div className={classes.form}>
         <div className={classes.container}>
-          <div><Input required title="First Name" name="firstName" onChange={onInputChange} value={firstName} /></div>
-          <div><Input required title="Last Name" name="lastName" onChange={onInputChange} value={lastName} /></div>
-          <div><Input required title="Date of Birth" name="dateOfBirth" onChange={onInputChange} value={dateOfBirth} type="date" /></div>
+          <form id="myform" onSubmit={onSubmit}>
+            <Input required title="First Name" name="firstName" onChange={onInputChange} value={firstName} />
+            <Input required title="Last Name" name="lastName" onChange={onInputChange} value={lastName} />
+            <Input required title="Date of Birth" name="dateOfBirth" onChange={onInputChange} value={dateOfBirth} type="date" />
+          </form>
           <Block title="Family Members">
             <FamilyList />
           </Block>
         </div>
         <div className={classes.actions}>
-          <Button submit className={classes.button}>Save</Button>
+          <Button submit className={classes.button} form="myform">Save</Button>
           {/* <Button reset className={classes.button}>Reset</Button> */}
         </div>
+      </div>
 
-      </form>
     </Modal>
   );
 }

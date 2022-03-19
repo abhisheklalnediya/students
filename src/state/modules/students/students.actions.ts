@@ -3,10 +3,10 @@ import Family from './d/Family';
 import Student from './d/Student';
 import {
   ACTION_ADD_FAMILY_DRAFT,
-  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODEL,
+  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODEL,
   ACTION_POST_STUDENT,
   ACTION_PUT_STUDENT,
-  ACTION_SELECT_STUDENT, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
+  ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
 } from './students.constants';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -18,6 +18,11 @@ export const setSearch = (q:string):Action => ({
 export const getStudents = (students:Student[] | any):Action => ({
   type: ACTION_GET_STUDENTS,
   payload: students
+});
+
+export const getNationalities = (nationalities:Student[] | any):Action => ({
+  type: ACTION_GET_NATIONALITIES,
+  payload: nationalities
 });
 
 export const putStudent = (students:Student | any):Action => ({
@@ -57,4 +62,9 @@ export const setModelHide = ():Action => ({
 export const setStudentDetails = (student:Student):Action => ({
   type: ACTION_SET_STUDENT_DETAIL,
   payload: student
+});
+
+export const setFamilyDetails = (family:Family):Action => ({
+  type: ACTION_SET_FAMILY_DETAIL,
+  payload: family
 });

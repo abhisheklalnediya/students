@@ -1,5 +1,6 @@
 import React from 'react';
 import Family from '../../state/modules/students/d/Family';
+import Button from '../Common/Button';
 import Label from '../Common/Labels';
 import classes from './familyRow.module.scss';
 
@@ -10,24 +11,26 @@ import classes from './familyRow.module.scss';
 
 type FamilyRowProp = {
   family: Family
+  onClick: Function
 };
 
 function FamilyRow(prop:FamilyRowProp) {
-  const { family } = prop;
+  const { family, onClick: oc } = prop;
   const {
-    firstName, lastName, dateOfBirth, ID, nationality, relationship
+    firstName, lastName, ID, nationality, relationship, draft
   } = family;
-  const { Title = 'NA' } = nationality || {};
-
-  console.log(family);
+  const { Title = '-' } = nationality || {};
+  const onClick = () => {
+    oc(ID);
+  };
   return (
     <div className={classes.container}>
-      <Label label={ID} className={classes.id} />
-      <Label label={`${firstName}`} className={classes.name} />
-      <Label label={lastName} className={classes.name} />
-      <Label label={relationship} className={classes.relationship} />
-      <Label label={Title} className={classes.nationality} />
-      <Label label={dateOfBirth} className={classes.dob} />
+      <Label label={draft ? '' : ID} className={classes.id} />
+      <Label label={firstName ? `${firstName} ${lastName}` : '-'} className={classes.name} />
+      <Label label={relationship || '-'} className={classes.relationship} />
+      <Label label={Title || '-'} className={classes.nationality} />
+      <Button mini onClick={onClick}>View</Button>
+      <Button error mini onClick={onClick}>Delete</Button>
     </div>
   );
 }

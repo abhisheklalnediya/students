@@ -16,22 +16,31 @@
 
 .id {
   font-weight: bold;
-  width: 80px;
+  width: 50px;
 }
 
 .name {
   font-weight: bold;
   width: 120px;
+  flex-grow: 1;
 }
 
 .relationship {
-  width: 120px;
+  // width: 120px;
+  flex-grow: 1;
 }
 
 .nationality {
-  width: 120px;
+  // width: 120px;
+  flex-grow: 1;
 }
 
 .dob {
  flex-grow: 1;
+}
+
+@media (max-width:767px) {
+  .dob, .nationality, .relationship {
+    display: none;
+  }
 }

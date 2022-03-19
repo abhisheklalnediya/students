@@ -1,10 +1,12 @@
+import { getRandomId } from '../../../Utils/common';
 import { Action } from '../../reducers.d';
 import { StudentState } from './d';
+import Family from './d/Family';
 import Student from './d/Student';
 import {
   ACTION_ADD_FAMILY_DRAFT,
-  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODEL, ACTION_POST_STUDENT,
-  ACTION_PUT_STUDENT, ACTION_SELECT_STUDENT, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
+  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODEL, ACTION_POST_STUDENT,
+  ACTION_PUT_STUDENT, ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
 } from './students.constants';
 
 export const INITIAL_STATE_STUDENT:StudentState = {
@@ -12,14 +14,19 @@ export const INITIAL_STATE_STUDENT:StudentState = {
   fetching: true,
   searchQuery: '',
   selectedStudentID: null,
+  nationalities: []
 };
 
 const getStudentIndex = (students:Student[], ID:number) => students.findIndex((s) => s.ID === ID);
 
 export function studentsReducer(state:StudentState, action:Action) {
-  // eslint-disable-next-line no-console
-  console.log({ action });
   switch (action.type) {
+    case ACTION_GET_NATIONALITIES: {
+      return {
+        ...state,
+        nationalities: action.payload
+      };
+    }
     case ACTION_SET_SEARCH: {
       return {
         ...state,
@@ -96,10 +103,9 @@ export function studentsReducer(state:StudentState, action:Action) {
 
       if (selectedStudentID !== null) {
         const student = students[getStudentIndex(students, selectedStudentID)];
-        const newFamily = { firstName: 'TADA' };
+        const newFamily = new Family(getRandomId(), { draft: true });
         student.family.push(newFamily);
         students[getStudentIndex(students, selectedStudentID)] = student;
-        console.log(student);
       }
 
       return {
@@ -107,6 +113,21 @@ export function studentsReducer(state:StudentState, action:Action) {
         students
       };
     }
+
+    case ACTION_SET_FAMILY_DETAIL: {
+      const { students, selectedStudentID } = state;
+      if (selectedStudentID !== null) {
+        const { family } = students[getStudentIndex(students, selectedStudentID)];
+        const selectedFamilyID = action.payload.ID;
+        const selectedFamilyIndex = family.findIndex((f) => f.ID === selectedFamilyID);
+        family[selectedFamilyIndex] = new Family(selectedFamilyID, action.payload);
+      }
+      return {
+        ...state,
+        students
+      };
+    }
+
     default:
       break;
   }
