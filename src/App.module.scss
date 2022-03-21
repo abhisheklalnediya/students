@@ -9,12 +9,16 @@
   height: 100vh;
   width: 100vw;
 }
+
 .searchContainer {
   margin: 10px 0px;
   width: 100%;
-  max-width: 800px;
+  // max-width: 800px;
   position: relative;
+  display: inline-flex;
+  gap: 10px;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -25,4 +29,12 @@
   max-width: 1362px;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.title {
+  width: 220px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.4em;
 }

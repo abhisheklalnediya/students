@@ -1,5 +1,5 @@
 import { getRandomId } from '../../../Utils/common';
-import { Action } from '../../reducers.d';
+import { Action } from '../../d/reducers';
 import { StudentState } from './d';
 import Family from './d/Family';
 import Student from './d/Student';

@@ -13,7 +13,7 @@ export type Option = {
 type SelectProps = {
   options: Option[]
   required: boolean,
-  title: string,
+  title?: string,
   name: string,
   onChange: Function,
   value: any
@@ -21,13 +21,13 @@ type SelectProps = {
 
 export default function Select(props:SelectProps) {
   const {
-    options, required = false, title, name, onChange, value
+    options, required = false, title = null, name, onChange, value
   } = props;
   const handleChange = (event: SelectChangeEvent) => onChange(event);
 
   return (
     <FormControl fullWidth className={classes.select}>
-      <InputLabel shrink className={classes.label} id={name}>{title}</InputLabel>
+      {title ? <InputLabel shrink className={classes.label} id={name}>{title}</InputLabel> : null}
       <MSelect
         labelId={name}
         name={name}
@@ -41,3 +41,7 @@ export default function Select(props:SelectProps) {
     </FormControl>
   );
 }
+
+Select.defaultProps = {
+  title: null
+};

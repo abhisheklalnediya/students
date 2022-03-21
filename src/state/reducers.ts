@@ -1,8 +1,8 @@
+import { Action } from './d/reducers';
 import { StudentState } from './modules/students/d';
 import { INITIAL_STATE_STUDENT, studentsReducer } from './modules/students/students.reducer';
+import { UserState } from './modules/user/d/user';
 import { INITIAL_STATE_USER, userReducer } from './modules/user/user';
-import { UserState } from './modules/user/user.d';
-import { Action } from './reducers.d';
 
 export type State = {
   studentsData:StudentState

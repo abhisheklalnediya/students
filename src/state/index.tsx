@@ -2,8 +2,8 @@ import {
   createContext, Dispatch, ReactChild,
   useContext, useReducer
 } from 'react';
+import { Action } from './d/reducers';
 import reducers, { GLOBAL_INITIAL_STATE, State } from './reducers';
-import { Action } from './reducers.d';
 
 export type ActionType = {
   type: string,

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React from 'react';
+import { Action } from '../state/d/reducers';
 import Family, { Nationality } from '../state/modules/students/d/Family';
 import Student from '../state/modules/students/d/Student';
 import * as StudentActions from '../state/modules/students/students.actions';
-import { Action } from '../state/reducers.d';
 
 const API_BASE_URL = 'http://localhost:8088/api';
 

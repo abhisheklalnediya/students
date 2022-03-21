@@ -1,4 +1,4 @@
-import { Action } from '../../reducers.d';
+import { Action } from '../../d/reducers';
 import Family, { Nationality } from './d/Family';
 import Student from './d/Student';
 import {
