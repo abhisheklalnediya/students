@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useAddStudent from '../../controllers/addStudent.controller';
 import useModal from '../../controllers/modal.controller';
 import useNationality from '../../controllers/nationality.controller';
@@ -34,14 +34,18 @@ function StudentModal() {
   const {
     firstName, lastName, dateOfBirth, nationality
   } = student;
+  const { isDisabled, isRegistar } = useUser(!!student.draft);
+  const open = selectedStudentID !== null;
 
   const onClose = () => {
     hideModal();
   };
 
-  // useEffect(() => {
-  //   setErrorMessages([]);
-  // }, [student]);
+  useEffect(() => {
+    if (!open && errorMessages.length) {
+      setErrorMessages([]);
+    }
+  }, [open]);
 
   const onSubmit = useCallback((e:React.SyntheticEvent) => {
     e.preventDefault();
@@ -88,8 +92,6 @@ function StudentModal() {
     hideModal();
   };
 
-  const { isDisabled, isRegistar } = useUser(!!student.draft);
-  const open = selectedStudentID !== null;
   let status = '[PENDING]';
   status = student.approved === true ? '[APPROVED]' : status;
   status = student.approved === false ? '[REJECTED]' : status;
@@ -102,8 +104,8 @@ function StudentModal() {
       <div className={classes.form}>
         <form id="myform" onSubmit={onSubmit}>
           <div className={classes.container}>
-            <Input title="First Name" name="firstName" onChange={onInputChange} value={firstName} disabled={isDisabled} />
-            <Input title="Last Name" name="lastName" onChange={onInputChange} value={lastName} disabled={isDisabled} />
+            <Input title="First Name" name="firstName" onChange={onInputChange} value={firstName} disabled={isDisabled} required />
+            <Input title="Last Name" name="lastName" onChange={onInputChange} value={lastName} disabled={isDisabled} required />
             <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} disabled={isDisabled} />
             <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" disabled={isDisabled} />
           </div>
