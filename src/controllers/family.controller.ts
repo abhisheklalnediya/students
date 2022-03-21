@@ -27,7 +27,6 @@ const useFamily = () => {
   const selectedFamily = selectedFamilyID ? family.find((f) => f.ID === selectedFamilyID) : null;
 
   useEffect(() => {
-    console.log({ family, selectedFamilyID });
     if (family.length) {
       setSelectedFamilyID(family[family.length - 1].ID);
     } else {
@@ -35,6 +34,9 @@ const useFamily = () => {
     }
   }, [family.length]);
 
+  useEffect(() => {
+    console.log('Family');
+  }, [family]);
   const addFamily = () => {
     dispatch(StudentActions.addFamily());
   };

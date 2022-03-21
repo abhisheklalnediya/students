@@ -2,23 +2,24 @@
     text-overflow: ellipsis;
     overflow: hidden;
     padding: 0px 5px;
-    background: #ffffff20;
-    color: #ffffff;
+    background: #545454DD;
+    color: #FFF;
     border: 1px solid #ddd;
     padding: 8px 10px;
     display: block;
     cursor: pointer;
     outline: none;
+    font-weight: bold;
 }
 
 .button:hover, .button:focus {
-    background: #ffffff40;
+    background: #545454FF;
 }
 
 
 
 .button:active {
-    background: #ffffff60;
+    background: #545454EE;
 }
 
 .button.mini {
@@ -27,4 +28,10 @@
 
 .error {
     border-color: #ff5722;
+}
+
+button.button:disabled {
+    cursor: auto;
+    background: #545454AA;
+    color: #DDD;
 }

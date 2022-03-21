@@ -1,16 +1,17 @@
 import React from 'react';
-import useModal from '../../controllers/modal.controller';
+import useAddStudent from '../../controllers/addStudent.controller';
 import Button from '../Common/Button';
 import classes from './addStudentRow.module.scss';
+
 /**
  * @author Abhishek Lal
  * @summary React Element which renders Button to add a Student
  */
 
 function AddStudentRow() {
-  const { showModal } = useModal();
+  const { addStudentDraft } = useAddStudent();
   const onClick = () => {
-    showModal(true);
+    addStudentDraft();
   };
   return (
     <div className={classes.container}>

@@ -10,12 +10,13 @@ type ButtonProps = {
   mini?:boolean
   error?:boolean
   form?:string
+  title?:string
 };
 
 function Button(props:ButtonProps) {
   const {
     disabled, submit, children, className, onClick,
-    mini, error, form
+    mini, error, form, title = undefined
   } = props;
   const buttonClasses = [classes.button, className];
   if (mini) {
@@ -26,6 +27,7 @@ function Button(props:ButtonProps) {
   }
   return (
     <button
+      title={title}
       type={submit ? 'submit' : 'button'}
       disabled={disabled}
       className={buttonClasses.join(' ')}
@@ -44,7 +46,8 @@ Button.defaultProps = {
   error: false,
   submit: false,
   onClick: undefined,
-  form: undefined
+  form: undefined,
+  title: undefined
 };
 
 export default Button;

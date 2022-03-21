@@ -2,6 +2,7 @@ import React from 'react';
 import { useStateValue } from '../../state';
 import Student from '../../state/modules/students/d/Student';
 import { setSelectStudent } from '../../state/modules/students/students.actions';
+import { formatDate } from '../../Utils/common';
 import Button from '../Common/Button';
 import Label from '../Common/Labels';
 import classes from './studentRow.module.scss';
@@ -29,7 +30,7 @@ function StudentRow(prop:StudentRowProp) {
       <Label label={ID} className={classes.id} />
       <Label label={`${firstName}`} className={classes.name} />
       <Label label={lastName} className={classes.name} />
-      <Label label={dateOfBirth} className={classes.dob} />
+      <Label label={dateOfBirth ? formatDate(dateOfBirth) : ''} className={classes.dob} />
       <div className={classes.actions}>
         <Button className={classes.buttonDelete} mini error>Delete</Button>
         <Button onClick={onViewClick} mini>View/Edit</Button>

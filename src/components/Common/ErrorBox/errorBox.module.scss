@@ -4,18 +4,20 @@
     flex-grow: 1;
     height: 100%;
     overflow: hidden;
+    color: #ff5722;
 }
 
 .body {
     border: 1px solid #2e2e2e;
-    padding: 20px 10px 10px 10px;
+    padding: 5px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     position: relative;
     height: 100%;
-
+    /* align-items: center; */
+    justify-content: center;
 }
 
 .title {

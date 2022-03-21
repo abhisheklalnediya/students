@@ -16,7 +16,7 @@ const useStudents = () => {
       getNationalities(dispatch);
     }
   }, []);
-  let visibleStudents = students;// .filter((s) => !s.draft);
+  let visibleStudents = students.filter((s) => !s.draft);
   if (searchQuery) {
     visibleStudents = visibleStudents.filter((s) => s.ID === parseInt(searchQuery, 10) || [s.firstName, s.lastName].join(' ').toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
   }

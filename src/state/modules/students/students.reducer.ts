@@ -5,7 +5,9 @@ import Family from './d/Family';
 import Student from './d/Student';
 import {
   ACTION_ADD_FAMILY_DRAFT,
-  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_HIDE_ADD_STUDENT_MODAL, ACTION_POST_STUDENT,
+  ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_FAMILY_NATIONALITY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_GET_STUDENT_NATIONALITY, ACTION_HIDE_ADD_STUDENT_MODAL,
+  ACTION_POST_STUDENT,
+  // ACTION_POST_STUDENT,
   ACTION_PUT_STUDENT, ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
 } from './students.constants';
 
@@ -73,20 +75,26 @@ export function studentsReducer(state:StudentState, action:Action) {
         students
       };
     }
+
     case ACTION_POST_STUDENT: {
       const { students } = state;
       return {
         ...state,
-        students: [action.payload, ...students]
+        students: [...students, action.payload]
       };
     }
     case ACTION_ADD_STUDENT_DRAFT: {
       const { students } = state;
       const newID = 0;
+      const newStudent = new Student(newID, { draft: true });
+      const nationality = state.nationalities.length && state.nationalities[0];
+      if (nationality) {
+        newStudent.nationality = nationality;
+      }
       return {
         ...state,
         selectedStudentID: newID,
-        students: [new Student(newID, { draft: true }), ...students]
+        students: [...students, newStudent]
       };
     }
     case ACTION_HIDE_ADD_STUDENT_MODAL: {
@@ -100,10 +108,13 @@ export function studentsReducer(state:StudentState, action:Action) {
 
     case ACTION_ADD_FAMILY_DRAFT: {
       const { students, selectedStudentID } = state;
-
+      const nationality = state.nationalities.length && state.nationalities[0];
       if (selectedStudentID !== null) {
         const student = students[getStudentIndex(students, selectedStudentID)];
         const newFamily = new Family(getRandomId(), { draft: true });
+        if (nationality) {
+          newFamily.nationality = nationality;
+        }
         student.family.push(newFamily);
         students[getStudentIndex(students, selectedStudentID)] = student;
       }
@@ -122,6 +133,31 @@ export function studentsReducer(state:StudentState, action:Action) {
         const selectedFamilyIndex = family.findIndex((f) => f.ID === selectedFamilyID);
         family[selectedFamilyIndex] = new Family(selectedFamilyID, action.payload);
       }
+      return {
+        ...state,
+        students
+      };
+    }
+    case ACTION_GET_STUDENT_NATIONALITY: {
+      const { students } = state;
+      console.log(action);
+      const { studentID, nationality } = action.payload;
+      const student = students[getStudentIndex(students, studentID)];
+      student.nationality = nationality;
+
+      return {
+        ...state,
+        students
+      };
+    }
+
+    case ACTION_GET_FAMILY_NATIONALITY: {
+      const { students } = state;
+      console.log(action);
+      // const { studentID, nationality } = action.payload;
+      // const student = students[getStudentIndex(students, studentID)];
+      // student.nationality = nationality;
+
       return {
         ...state,
         students

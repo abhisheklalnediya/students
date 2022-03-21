@@ -1,33 +1,44 @@
-import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MSelect, { SelectChangeEvent } from '@mui/material/Select';
 import * as React from 'react';
+import classes from './select.module.scss';
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState('');
+export type Option = {
+  value:any
+  label:string | number
+};
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
+type SelectProps = {
+  options: Option[]
+  required: boolean,
+  title: string,
+  name: string,
+  onChange: Function,
+  value: any
+};
+
+export default function Select(props:SelectProps) {
+  const {
+    options, required = false, title, name, onChange, value
+  } = props;
+  const handleChange = (event: SelectChangeEvent) => onChange(event);
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <FormControl fullWidth className={classes.select}>
+      <InputLabel shrink className={classes.label} id={name}>{title}</InputLabel>
+      <MSelect
+        labelId={name}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        required={required}
+        variant="standard"
+      >
+        {options.map((o) => <MenuItem key={o.value} value={o.value}>{o.label}</MenuItem>)}
+
+      </MSelect>
+    </FormControl>
   );
 }

@@ -18,6 +18,8 @@ function Modal(props:ModalProps) {
   const modalClasses = [classes.modal, className];
   if (open) {
     modalClasses.push(classes.open);
+  } else {
+    return null;
   }
 
   return (

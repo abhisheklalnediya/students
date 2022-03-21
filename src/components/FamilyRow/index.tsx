@@ -12,20 +12,24 @@ import classes from './familyRow.module.scss';
 type FamilyRowProp = {
   family: Family
   onClick: Function
+  error: boolean
 };
 
 function FamilyRow(prop:FamilyRowProp) {
-  const { family, onClick: oc } = prop;
+  const { family, onClick: oc, error } = prop;
   const {
-    firstName, lastName, ID, nationality, relationship, draft
+    firstName, lastName, ID, nationality, relationship,
   } = family;
   const { Title = '-' } = nationality || {};
   const onClick = () => {
     oc(ID);
   };
+  const containerClasses = [classes.container];
+  if (error) {
+    containerClasses.push(classes.error);
+  }
   return (
-    <div className={classes.container}>
-      <Label label={draft ? '' : ID} className={classes.id} />
+    <div className={containerClasses.join(' ')}>
       <Label label={firstName ? `${firstName} ${lastName}` : '-'} className={classes.name} />
       <Label label={relationship || '-'} className={classes.relationship} />
       <Label label={Title || '-'} className={classes.nationality} />

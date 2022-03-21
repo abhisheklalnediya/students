@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import React from 'react';
 import classes from './input.module.scss';
 
@@ -23,23 +24,23 @@ function Input(props:InputProps) {
     const date = new Date(value);
     [v] = date.toISOString().split('T');
   }
+  const tClasses = {
+    root: [classes.input, className].join(' ')
+  };
   return (
-    <div className={classes.container}>
-      <div className={classes.title}>{title}</div>
-      <input
-        value={v}
-        type={type}
-        disabled={disabled}
-        className={[classes.input, className].join(' ')}
-        onChange={onChange}
-        required={required}
-        name={name}
-        placeholder={type === 'date' ? 'mm - dd - yyyy' : undefined}
-        pattern={type === 'date' ? '\\d{2}-\\d{2}-\\d{4}' : undefined}
-        // min={type === 'date' ? '1990-01-01' : undefined}
-        // max={type === 'date' ? '2020-12-31' : undefined}
-      />
-    </div>
+    <TextField
+      label={title}
+      value={v}
+      type={type}
+      disabled={disabled}
+      classes={tClasses}
+      onChange={onChange}
+      required={required}
+      name={name}
+      fullWidth
+      variant="standard"
+      InputLabelProps={{ shrink: true }}
+    />
   );
 }
 

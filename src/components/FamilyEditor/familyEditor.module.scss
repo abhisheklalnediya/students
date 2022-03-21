@@ -1,25 +1,7 @@
-.actions{  
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 10px;
-  box-sizing: border-box;
-  border-top: 1px solid #2e2e2e;
-}
 
-.button {
-  min-width: 180px;
-    width: 32%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  overflow: hidden;
-}
-
-.container {
-  flex-grow: 1;
+.title {
+  padding: 5px 0px 2px 0px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
 }

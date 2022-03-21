@@ -1,3 +1,14 @@
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  background-color: #515151;
+  border-bottom: 1px solid #FFFFFF88;
+  color: #FFF;
+}
+
 .container {
   display: flex;
   flex-direction: row;
