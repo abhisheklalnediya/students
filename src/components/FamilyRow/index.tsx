@@ -21,6 +21,7 @@ function FamilyRow(prop:FamilyRowProp) {
     firstName, lastName, ID, nationality, relationship,
   } = family;
   const { Title = '-' } = nationality || {};
+
   const onClick = () => {
     oc(ID);
   };
@@ -34,7 +35,7 @@ function FamilyRow(prop:FamilyRowProp) {
       <Label label={relationship || '-'} className={classes.relationship} />
       <Label label={Title || '-'} className={classes.nationality} />
       <Button mini onClick={onClick}>View</Button>
-      <Button error mini onClick={onClick}>Delete</Button>
+      {/* <Button error mini onClick={onClick}>Delete</Button> */}
     </div>
   );
 }

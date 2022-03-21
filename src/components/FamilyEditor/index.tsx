@@ -1,5 +1,6 @@
 import React from 'react';
 import useNationality from '../../controllers/nationality.controller';
+import useUser from '../../controllers/user.controller';
 import { useStateValue } from '../../state';
 import Family, { isFamilyValid, Nationality, relationOptions } from '../../state/modules/students/d/Family';
 import { setFamilyDetails } from '../../state/modules/students/students.actions';
@@ -48,14 +49,15 @@ function FamilyEditor(props:FamilyEditorProps) {
     }
   };
   const { messages } = isFamilyValid(family);
+  const { isDisabled } = useUser(family.draft);
   return (
     <div>
       <Label label="Edit Family Member" className={classes.title} />
-      <Input required title="First Name" name="firstName" onChange={onInputChange} value={firstName} />
-      <Input required title="Last Name" name="lastName" onChange={onInputChange} value={lastName} />
-      <Select required title="Relationship" name="relationship" onChange={onInputChange} value={relationship} options={relationOptions} />
-      <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} />
-      <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" />
+      <Input required title="First Name" name="firstName" onChange={onInputChange} value={firstName} disabled={isDisabled} />
+      <Input required title="Last Name" name="lastName" onChange={onInputChange} value={lastName} disabled={isDisabled} />
+      <Select required title="Relationship" name="relationship" onChange={onInputChange} value={relationship} options={relationOptions} disabled={isDisabled} />
+      <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} disabled={isDisabled} />
+      <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" disabled={isDisabled} />
       {messages.length && markError ? <ErrorBox>{messages.join('; ')}</ErrorBox> : null}
       {/* {messages.join(' ')} */}
     </div>

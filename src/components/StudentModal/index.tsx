@@ -3,6 +3,7 @@ import useAddStudent from '../../controllers/addStudent.controller';
 import useModal from '../../controllers/modal.controller';
 import useNationality from '../../controllers/nationality.controller';
 import useStudent from '../../controllers/student.controller';
+import useUser from '../../controllers/user.controller';
 import { useStateValue } from '../../state';
 import { Nationality } from '../../state/modules/students/d/Family';
 import { isStudentValid } from '../../state/modules/students/d/Student';
@@ -80,16 +81,16 @@ function StudentModal() {
   };
   const open = selectedStudentID !== null;
   const title = student.draft ? 'Add Student' : 'Edit Student';
-
+  const { isDisabled } = useUser(!!student.draft);
   return (
     <Modal open={open} onClose={onClose} title={title}>
       <div className={classes.form}>
         <form id="myform" onSubmit={onSubmit}>
           <div className={classes.container}>
-            <Input title="First Name" name="firstName" onChange={onInputChange} value={firstName} />
-            <Input title="Last Name" name="lastName" onChange={onInputChange} value={lastName} />
-            <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} />
-            <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" />
+            <Input title="First Name" name="firstName" onChange={onInputChange} value={firstName} disabled={isDisabled} />
+            <Input title="Last Name" name="lastName" onChange={onInputChange} value={lastName} disabled={isDisabled} />
+            <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} disabled={isDisabled} />
+            <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" disabled={isDisabled} />
           </div>
         </form>
         <Block title="Family Members">

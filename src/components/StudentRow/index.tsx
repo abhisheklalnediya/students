@@ -1,4 +1,5 @@
 import React from 'react';
+import useUser from '../../controllers/user.controller';
 import { useStateValue } from '../../state';
 import Student from '../../state/modules/students/d/Student';
 import { setSelectStudent } from '../../state/modules/students/students.actions';
@@ -25,6 +26,7 @@ function StudentRow(prop:StudentRowProp) {
   const onViewClick = () => {
     dispatch(setSelectStudent(ID));
   };
+  const { isDisabled } = useUser();
   return (
     <div className={classes.container}>
       <Label label={ID} className={classes.id} />
@@ -32,8 +34,8 @@ function StudentRow(prop:StudentRowProp) {
       <Label label={lastName} className={classes.name} />
       <Label label={dateOfBirth ? formatDate(dateOfBirth) : ''} className={classes.dob} />
       <div className={classes.actions}>
-        <Button className={classes.buttonDelete} mini error>Delete</Button>
-        <Button onClick={onViewClick} mini>View/Edit</Button>
+        {/* <Button className={classes.buttonDelete} mini error disabled={isDisabled}>Delete</Button> */}
+        <Button onClick={onViewClick} mini>{isDisabled ? 'View' : 'View/Edit'}</Button>
       </div>
     </div>
   );

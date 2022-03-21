@@ -41,7 +41,7 @@ const useFamily = () => {
   };
 
   return {
-    family, fetching, addFamily, selectedFamily, setSelectedFamilyID, selectedFamilyID
+    family, fetching, addFamily, selectedFamily, setSelectedFamilyID, selectedFamilyID, selectedStudent
   };
 };
 export default useFamily;

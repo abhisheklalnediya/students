@@ -16,12 +16,13 @@ type SelectProps = {
   title?: string,
   name: string,
   onChange: Function,
-  value: any
+  value: any,
+  disabled?:boolean
 };
 
 export default function Select(props:SelectProps) {
   const {
-    options, required = false, title = null, name, onChange, value
+    options, required = false, title = null, name, onChange, value, disabled = false
   } = props;
   const handleChange = (event: SelectChangeEvent) => onChange(event);
 
@@ -35,6 +36,7 @@ export default function Select(props:SelectProps) {
         onChange={handleChange}
         required={required}
         variant="standard"
+        disabled={disabled}
       >
         {options.map((o) => <MenuItem key={o.value} value={o.value}>{o.label}</MenuItem>)}
       </MSelect>
@@ -43,5 +45,6 @@ export default function Select(props:SelectProps) {
 }
 
 Select.defaultProps = {
-  title: null
+  title: null,
+  disabled: false
 };
