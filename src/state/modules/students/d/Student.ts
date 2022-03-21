@@ -16,6 +16,8 @@ export default class Student {
 
   draft:Boolean = false;
 
+  approved:Boolean | null = null;
+
   constructor(ID:number = 0, {
     firstName = '', lastName = '', dateOfBirth = formatDateValue(), nationality = null, family = [], draft = false
   } = {}) {

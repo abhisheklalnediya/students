@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './label.module.scss';
 
 type LabelProps = {
-  label: string | number
+  label: string | number | React.ReactChild
   className?:string
 };
 

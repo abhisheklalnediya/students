@@ -7,7 +7,7 @@ import useUser from '../../controllers/user.controller';
 import { useStateValue } from '../../state';
 import { Nationality } from '../../state/modules/students/d/Family';
 import { isStudentValid } from '../../state/modules/students/d/Student';
-import { setStudentDetails } from '../../state/modules/students/students.actions';
+import { setApproveStudent, setRejectStudent, setStudentDetails } from '../../state/modules/students/students.actions';
 import Block from '../Common/Block';
 import Button from '../Common/Button';
 import DatePicker from '../Common/DatePicker';
@@ -79,9 +79,24 @@ function StudentModal() {
       dispatch(setStudentDetails(studentNew));
     }
   };
+  const onApprove = () => {
+    dispatch(setApproveStudent(student));
+    hideModal();
+  };
+  const onReject = () => {
+    dispatch(setRejectStudent(student));
+    hideModal();
+  };
+
+  const { isDisabled, isRegistar } = useUser(!!student.draft);
   const open = selectedStudentID !== null;
-  const title = student.draft ? 'Add Student' : 'Edit Student';
-  const { isDisabled } = useUser(!!student.draft);
+  let status = '[PENDING]';
+  status = student.approved === true ? '[APPROVED]' : status;
+  status = student.approved === false ? '[REJECTED]' : status;
+  status = isRegistar ? status : '';
+
+  const title = `${status} ${student.draft ? 'Add Student' : 'Edit Student'}`;
+
   return (
     <Modal open={open} onClose={onClose} title={title}>
       <div className={classes.form}>
@@ -99,6 +114,12 @@ function StudentModal() {
         <div className={classes.actions}>
           {errorMessages.length ? <ErrorBox>{errorMessages.join('; ')}</ErrorBox> : null}
           <Button submit className={classes.button} form="myform">Save</Button>
+          {isRegistar ? (
+            <>
+              <Button className={classes.button} onClick={onApprove}>Approve</Button>
+              <Button className={classes.button} onClick={onReject}>Reject</Button>
+            </>
+          ) : null}
           {/* <Button reset className={classes.button}>Reset</Button> */}
         </div>
       </div>

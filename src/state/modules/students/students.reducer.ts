@@ -6,7 +6,7 @@ import Student from './d/Student';
 import {
   ACTION_ADD_FAMILY_DRAFT,
   ACTION_ADD_STUDENT_DRAFT, ACTION_GET_FAMILY, ACTION_GET_FAMILY_NATIONALITY, ACTION_GET_NATIONALITIES, ACTION_GET_STUDENTS, ACTION_GET_STUDENT_NATIONALITY, ACTION_HIDE_ADD_STUDENT_MODAL,
-  ACTION_POST_STUDENT, ACTION_PUT_STUDENT, ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
+  ACTION_POST_STUDENT, ACTION_PUT_STUDENT, ACTION_SELECT_STUDENT, ACTION_SET_APPROVE_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_REJECT_STUDENT, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
 } from './students.constants';
 
 export const INITIAL_STATE_STUDENT:StudentState = {
@@ -150,6 +150,26 @@ export function studentsReducer(state:StudentState, action:Action) {
 
     case ACTION_GET_FAMILY_NATIONALITY: {
       const { students } = state;
+      return {
+        ...state,
+        students
+      };
+    }
+
+    case ACTION_SET_APPROVE_STUDENT: {
+      const { students } = state;
+      const student = students[getStudentIndex(students, action.payload.ID)];
+      student.approved = true;
+      return {
+        ...state,
+        students
+      };
+    }
+
+    case ACTION_SET_REJECT_STUDENT: {
+      const { students } = state;
+      const student = students[getStudentIndex(students, action.payload.ID)];
+      student.approved = false;
       return {
         ...state,
         students

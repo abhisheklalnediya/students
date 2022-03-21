@@ -10,6 +10,7 @@ import classes from './studentRow.module.scss';
 function StudentTitleRow() {
   return (
     <div className={classes.titleContainer}>
+      <Label label="Status" className={classes.status} />
       <Label label="ID" className={classes.id} />
       <Label label="First Name" className={classes.name} />
       <Label label="Last Name" className={classes.name} />

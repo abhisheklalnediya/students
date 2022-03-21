@@ -7,7 +7,7 @@ import {
   ACTION_GET_STUDENTS, ACTION_GET_STUDENT_NATIONALITY, ACTION_HIDE_ADD_STUDENT_MODAL,
   ACTION_POST_FAMILY, ACTION_POST_STUDENT, ACTION_PUT_FAMILY, ACTION_PUT_FAMILY_NATIONALITY, ACTION_PUT_STUDENT,
   ACTION_PUT_STUDENT_NATIONALITY,
-  ACTION_SELECT_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
+  ACTION_SELECT_STUDENT, ACTION_SET_APPROVE_STUDENT, ACTION_SET_FAMILY_DETAIL, ACTION_SET_REJECT_STUDENT, ACTION_SET_SEARCH, ACTION_SET_STUDENT_DETAIL
 } from './students.constants';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -97,4 +97,13 @@ export const setStudentDetails = (student:Student):Action => ({
 export const setFamilyDetails = (family:Family):Action => ({
   type: ACTION_SET_FAMILY_DETAIL,
   payload: family
+});
+
+export const setApproveStudent = (student:Student):Action => ({
+  type: ACTION_SET_APPROVE_STUDENT,
+  payload: student
+});
+export const setRejectStudent = (student:Student):Action => ({
+  type: ACTION_SET_REJECT_STUDENT,
+  payload: student
 });

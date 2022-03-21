@@ -20,15 +20,24 @@ type StudentRowProp = {
 function StudentRow(prop:StudentRowProp) {
   const { student } = prop;
   const {
-    firstName, lastName, dateOfBirth, ID
+    firstName, lastName, dateOfBirth, ID, approved
   } = student;
   const { dispatch } = useStateValue();
   const onViewClick = () => {
     dispatch(setSelectStudent(ID));
   };
   const { isDisabled } = useUser();
+  const approveIcon = ['lni'];
+  if (approved === true) {
+    approveIcon.push('lni-checkmark-circle');
+  } else if (approved === false) {
+    approveIcon.push('lni-cross-circle');
+  } else {
+    approveIcon.push('lni-pencil-alt');
+  }
   return (
     <div className={classes.container}>
+      <Label label={<i className={approveIcon.join(' ')} />} className={classes.status} />
       <Label label={ID} className={classes.id} />
       <Label label={`${firstName}`} className={classes.name} />
       <Label label={lastName} className={classes.name} />
