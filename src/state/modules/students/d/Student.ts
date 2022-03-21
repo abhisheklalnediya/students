@@ -50,7 +50,6 @@ export const isStudentValid = (student:Student) => {
     messages.push('Add atleast one family member');
   }
   if (!familyValid) {
-    console.log(familyValid);
     messages.push('Family members are not valid');
   }
 

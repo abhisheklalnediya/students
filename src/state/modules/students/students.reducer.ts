@@ -138,7 +138,6 @@ export function studentsReducer(state:StudentState, action:Action) {
     }
     case ACTION_GET_STUDENT_NATIONALITY: {
       const { students } = state;
-      console.log(action);
       const { studentID, nationality } = action.payload;
       const student = students[getStudentIndex(students, studentID)];
       student.nationality = nationality;
@@ -151,11 +150,6 @@ export function studentsReducer(state:StudentState, action:Action) {
 
     case ACTION_GET_FAMILY_NATIONALITY: {
       const { students } = state;
-      console.log(action);
-      // const { studentID, nationality } = action.payload;
-      // const student = students[getStudentIndex(students, studentID)];
-      // student.nationality = nationality;
-
       return {
         ...state,
         students

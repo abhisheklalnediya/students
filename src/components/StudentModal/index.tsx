@@ -80,7 +80,7 @@ function StudentModal() {
   };
   const open = selectedStudentID !== null;
   const title = student.draft ? 'Add Student' : 'Edit Student';
-  console.log(student);
+
   return (
     <Modal open={open} onClose={onClose} title={title}>
       <div className={classes.form}>

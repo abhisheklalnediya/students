@@ -35,7 +35,6 @@ const useFamily = () => {
   }, [family.length]);
 
   useEffect(() => {
-    console.log('Family');
   }, [family]);
   const addFamily = () => {
     dispatch(StudentActions.addFamily());
