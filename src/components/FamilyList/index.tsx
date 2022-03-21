@@ -33,7 +33,7 @@ function FamilyList(props:FamilyListProps) {
       </div>
       {selectedFamily ? (
         <div className={classes.editor}>
-          <FamilyEditor family={selectedFamily} />
+          <FamilyEditor family={selectedFamily} markError={markError} />
         </div>
       ) : null }
     </div>

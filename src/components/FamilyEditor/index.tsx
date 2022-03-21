@@ -12,10 +12,12 @@ import classes from './familyEditor.module.scss';
 
 type FamilyEditorProps = {
   family: Family
+  markError: boolean
+
 };
 
 function FamilyEditor(props:FamilyEditorProps) {
-  const { family } = props;
+  const { family, markError } = props;
   const {
     firstName, lastName, dateOfBirth, relationship, nationality
   } = family;
@@ -54,7 +56,7 @@ function FamilyEditor(props:FamilyEditorProps) {
       <Select required title="Relationship" name="relationship" onChange={onInputChange} value={relationship} options={relationOptions} />
       <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} />
       <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" />
-      {messages.length ? <ErrorBox>{messages.join('; ')}</ErrorBox> : null}
+      {messages.length && markError ? <ErrorBox>{messages.join('; ')}</ErrorBox> : null}
       {/* {messages.join(' ')} */}
     </div>
   );
