@@ -20,7 +20,7 @@ export default function DatePicker(props:DatePickerProps) {
     title, required = false,
     name, value
   } = props;
-  console.log(value, formatDateValue(value));
+
   return (
     <TextField
       label={title}
@@ -42,21 +42,6 @@ export default function DatePicker(props:DatePickerProps) {
       }}
     />
   );
-  // <LocalizationProvider dateAdapter={AdapterDateFns}>
-  //   <Box className={classes.datePicker}>
-  //     {/* <MDatePicker
-  //       views={['year', 'month', 'day']}
-  //       openTo="year"
-  //       label={label}
-  //       onChange={onChange}
-  //       value={value}
-  //       renderInput={(params) => <TextField className={classes.datePicker} {...params} variant="standard" />}
-  //     /> */}
-  //     <TextField className={classes.datePicker} type="date" label variant="standard" />
-  //   </Box>
-  // </LocalizationProvider>
-
-  // );
 }
 
 DatePicker.defaultProps = {

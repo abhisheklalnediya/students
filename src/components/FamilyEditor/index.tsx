@@ -4,6 +4,7 @@ import { useStateValue } from '../../state';
 import Family, { isFamilyValid, Nationality, relationOptions } from '../../state/modules/students/d/Family';
 import { setFamilyDetails } from '../../state/modules/students/students.actions';
 import DatePicker from '../Common/DatePicker';
+import ErrorBox from '../Common/ErrorBox';
 import Input from '../Common/Input';
 import Label from '../Common/Labels';
 import Select from '../Common/Select';
@@ -45,7 +46,6 @@ function FamilyEditor(props:FamilyEditorProps) {
     }
   };
   const { messages } = isFamilyValid(family);
-  console.log(messages);
   return (
     <div>
       <Label label="Edit Family Member" className={classes.title} />
@@ -54,7 +54,7 @@ function FamilyEditor(props:FamilyEditorProps) {
       <Select required title="Relationship" name="relationship" onChange={onInputChange} value={relationship} options={relationOptions} />
       <Select required title="Nationality" name="nationality" onChange={onInputChange} value={nationality && nationality.ID} options={nationalityOptions} />
       <DatePicker title="Date of Birth" onChange={onDateChange} value={dateOfBirth} name="dateOfBirth" />
-      {/* {messages.length ? <ErrorBox>{messages.join('; ')}</ErrorBox> : null} */}
+      {messages.length ? <ErrorBox>{messages.join('; ')}</ErrorBox> : null}
       {/* {messages.join(' ')} */}
     </div>
   );

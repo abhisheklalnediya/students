@@ -15,7 +15,6 @@ function ErrorBox(props:ErrorBoxProps) {
   const blockClasses = [classes.block, className];
 
   return (
-
     <div className={blockClasses.join(' ')}>
       {title ? <span className={classes.title}>{title}</span> : null}
       <div className={classes.body}>

@@ -37,7 +37,6 @@ export default function Select(props:SelectProps) {
         variant="standard"
       >
         {options.map((o) => <MenuItem key={o.value} value={o.value}>{o.label}</MenuItem>)}
-
       </MSelect>
     </FormControl>
   );
